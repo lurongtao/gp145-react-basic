@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { FooterWrap } from './footer'
+import { FooterWrap } from './styledFooter'
 
 function Footer() {
   return (
