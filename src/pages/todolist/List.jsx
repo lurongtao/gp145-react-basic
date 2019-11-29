@@ -5,6 +5,10 @@ import PropTypes from 'prop-types'
 import ListItem from './ListItem'
 
 export default class List extends Component {
+  // constructor() {
+  //   super()
+  // }
+
   static defaultProps = {
     keyword: ''
   }
@@ -20,7 +24,9 @@ export default class List extends Component {
   }
 
   state = {
-    list: ['task1', 'task2']
+    list: ['task1', 'task2'],
+    show: false,
+    title: '<b>hello</b>'
   }
 
   handleClick(index) {
@@ -37,24 +43,42 @@ export default class List extends Component {
     })
   }
 
+  handleShowList = () => {
+    this.setState((prevState) => {
+      return {
+        show: !prevState.show
+      }
+    })
+    // console.log(args)
+  }
+
   render() {
     return (
-      <ul>
+      <>
         {
-          this.state.list.map((value, index) => {
-            return (
-              <ListItem 
-                key={value+index} value={value}
-                onItemClick={this.handleClick.bind(this)}
-                index={index}
-              ></ListItem>
-            )
-          })
+          this.state.show
+          && (<ul>
+            {
+              this.state.list.map((value, index) => {
+                return (
+                  <ListItem 
+                    key={value+index} 
+                    value={value}
+                    onItemClick={this.handleClick.bind(this)}
+                    index={index}
+                  ></ListItem>
+                )
+              })
+            }
+            <li>
+              <label htmlFor="abc"></label>
+              <span dangerouslySetInnerHTML={{__html: this.state.title}}></span>
+            </li>
+          </ul>)
         }
-        {/* <li>
-          {this.props.children}
-        </li> */}
-      </ul>
+        
+        <button onClick={this.handleShowList}>showlist</button>
+      </>
     )
   }
 }

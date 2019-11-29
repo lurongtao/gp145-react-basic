@@ -14,14 +14,16 @@ class TodoList extends Component {
     })
   }
 
-  componentDidMount() {
-    this.setState({
-      initValue: '-abc'
+  async componentDidMount() {
+    await this.setState({
+      initValue: '--abc'
     })
+
+    console.log(this.state.initValue)
   }
 
   render() {
-    console.log(1)
+    // console.log(1)
     return (
       <>
         <Form 

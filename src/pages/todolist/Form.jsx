@@ -1,13 +1,18 @@
-import React, { Component } from 'react'
+import React, { Component, createRef } from 'react'
 
 class Form extends Component {
+  constructor() {
+    super()
+    this.inputRef = createRef()
+  }
+
   state = {
-    keyword: '',
+    // keyword: '',
     arr: ['a', 'b']
   }
 
   handleChange(e) {
-    let value = e.target.value
+    // let value = e.target.value
     // this.setState({
     //   keyword: value,
     //   arr: [
@@ -18,46 +23,39 @@ class Form extends Component {
     // this.state.keyword = e.target.value
     // this.state.arr = ['a', 'b', 'd']
 
-    this.setState(state => {
-      return {
-        keyword: value,
-        arr: [
-          ...state.arr,
-          value
-        ]
-      }
-    }, () => {
-      console.log(this.state.keyword)
-    })
+    // this.setState(state => {
+    //   return {
+    //     keyword: value,
+    //     arr: [
+    //       ...state.arr,
+    //       value
+    //     ]
+    //   }
+    // }, () => {
+    //   console.log(this.state.keyword)
+    // })
   }
 
   handleKeyUp(e) {
     if (e.keyCode === 13) {
-      this.props.onReceiveKeyword(this.state.keyword)
-      this.setState({
-        keyword: ''
-      })
+      let input = this.inputRef.current
+      this.props.onReceiveKeyword(input.value)
+      input.value = ''
+      // this.setState({
+      //   keyword: ''
+      // })
     }
   }
 
   render() {
-    console.log(0)
+    // console.log(0)
     return (
       <>
-        <input 
-          value={this.state.keyword} 
-          onChange={this.handleChange.bind(this)} 
+        <input
+          ref={this.inputRef}
           onKeyUp={this.handleKeyUp.bind(this)}
           type="text"
         />
-        {
-          this.state.arr.map((value, index) => {
-            return <span key={value+index}>{value}</span>
-          })
-        }
-        {
-          this.props.initValue
-        }
       </>
     )
   }

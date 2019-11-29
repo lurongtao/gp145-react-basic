@@ -5,9 +5,14 @@ import ReactDOM from 'react-dom'
 // import Footer from './pages/Footer'
 // import Nav from './pages/Nav'
 
-import TodoList from './pages/todolist/TodoList'
+// import TodoList from './pages/todolist/TodoList'
+import Parent from './pages/life_times/Parent'
 
 ReactDOM.render(
-  <TodoList></TodoList>,
+  <Parent></Parent>,
   document.getElementById('root')
 )
+
+setTimeout(() => {
+  ReactDOM.unmountComponentAtNode(document.getElementById('root'))
+}, 3000)
