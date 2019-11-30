@@ -13,6 +13,6 @@ ReactDOM.render(
   document.getElementById('root')
 )
 
-setTimeout(() => {
-  ReactDOM.unmountComponentAtNode(document.getElementById('root'))
-}, 3000)
+// setTimeout(() => {
+//   ReactDOM.unmountComponentAtNode(document.getElementById('root'))
+// }, 3000)

@@ -15,18 +15,24 @@ export default class Parent extends Component {
 
   render() {
     return (
-      <Child value={this.state.value.x.y}></Child>
+      <Child isShow={this.state.isShow}></Child>
     )
   }
 
   componentDidMount() {
+    console.log('parent componentDidMount')
     // this.state.datalist.push('c')
-    this.setState({
-      value: {
-        x: {
-          y: 0
-        }
-      }
-    })
+    // this.setState({
+    //   value: {
+    //     x: {
+    //       y: 0
+    //     }
+    //   }
+    // })
+    setTimeout(() => {
+      this.setState({
+        isShow: false
+      })
+    }, 0)
   }
 }
