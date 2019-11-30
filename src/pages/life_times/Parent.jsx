@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import Child from './Child'
+import ChildHood from './ChildHood'
 
 export default class Parent extends Component {
   state = {
@@ -15,12 +15,12 @@ export default class Parent extends Component {
 
   render() {
     return (
-      <Child isShow={this.state.isShow}></Child>
+      <ChildHood></ChildHood>
     )
   }
 
   componentDidMount() {
-    console.log('parent componentDidMount')
+    // console.log('parent componentDidMount')
     // this.state.datalist.push('c')
     // this.setState({
     //   value: {
@@ -29,10 +29,10 @@ export default class Parent extends Component {
     //     }
     //   }
     // })
-    setTimeout(() => {
-      this.setState({
-        isShow: false
-      })
-    }, 0)
+    // setTimeout(() => {
+    //   this.setState({
+    //     isShow: false
+    //   })
+    // }, 0)
   }
 }
