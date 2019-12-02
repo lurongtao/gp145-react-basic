@@ -7,17 +7,30 @@ import ReactDOM from 'react-dom'
 
 // import TodoList from './pages/todolist/TodoList'
 
-import {
-  MyProvider
-} from './pages/context/color_context'
-import Parent from './pages/context/Parent'
+// import ComposeApply from './pages/enhancer/ComposeApply'
 
-import Hoc from './pages/hoc/Hoc'
+// import Hoc from './pages/enhancer/Hoc.jsx'
+
+// import RenderProps from './pages/enhancer/RenderProps'
+
+import Counter from './pages/counter/Counter'
+import Counter1 from './pages/counter/Counter1'
+
+// import {
+//   MyProvider
+// } from './pages/context/color_context'
+// import Parent from './pages/context/Parent'
+
+// import Hoc from './pages/hoc/Hoc'
+
+import storeContext from './pages/context/store_context'
+import store from './pages/redux/counter/store'
 
 ReactDOM.render(
-  <MyProvider>
-    <Hoc></Hoc>
-  </MyProvider>,
+  <storeContext.Provider value={store}>
+    <Counter></Counter>
+    <Counter1></Counter1>
+  </storeContext.Provider>,
   document.getElementById('root')
 )
 
