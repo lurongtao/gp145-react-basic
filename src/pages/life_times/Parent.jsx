@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
-import ChildHood from './ChildHood'
+// import ChildHood from './ChildHood'
+import Child from './Child'
 
 export default class Parent extends Component {
   state = {
@@ -13,9 +14,16 @@ export default class Parent extends Component {
     }
   }
 
+  handleReceive = (msg) => {
+    console.log(msg)
+  }
+
   render() {
     return (
-      <ChildHood></ChildHood>
+      <Child 
+        title="line 1"
+        onReceive={this.handleReceive}
+      ></Child>
     )
   }
 

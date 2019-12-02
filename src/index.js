@@ -6,10 +6,18 @@ import ReactDOM from 'react-dom'
 // import Nav from './pages/Nav'
 
 // import TodoList from './pages/todolist/TodoList'
-import Parent from './pages/life_times/Parent'
+
+import {
+  MyProvider
+} from './pages/context/color_context'
+import Parent from './pages/context/Parent'
+
+import Hoc from './pages/hoc/Hoc'
 
 ReactDOM.render(
-  <Parent></Parent>,
+  <MyProvider>
+    <Hoc></Hoc>
+  </MyProvider>,
   document.getElementById('root')
 )
 

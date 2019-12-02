@@ -24,11 +24,17 @@ export default class Child extends Component {
   //   console.log('componentWillMount.')
   // }
 
+  handleClick = () => {
+    this.props.onReceive('hello')
+  }
+
   render() {
-    console.log('render')
+    // console.log('render')
+    let { title } = this.props
     return (
       <div>
-        parent - { JSON.stringify(this.props.isShow) }
+        {title}
+        <button onClick={this.handleClick}>send message</button>
       </div>
     )
   }
