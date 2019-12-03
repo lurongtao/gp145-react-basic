@@ -17,12 +17,18 @@ export default class Counter extends Component {
   }
 
   componentDidMount () {
-    console.log(this.context)
     this.context.subscribe(() => {
       this.setState({
         counter: this.context.getState().counter
       })
     })
+
+    setTimeout(() => {
+      this.context.dispatch({
+        type: 'loadData',
+        data: 100
+      })
+    }, 5000)
   }
 
   render() {

@@ -2,7 +2,8 @@ const defaultState = {
   counter: 0
 }
 
-export default (state=defaultState, action) => {
+// 纯函数
+const reducers = (state=defaultState, action) => {
   switch (action.type) {
     case 'increment':
       return {
@@ -16,3 +17,5 @@ export default (state=defaultState, action) => {
       return state
   }
 }
+
+module.exports = reducers

@@ -1,30 +1,35 @@
-const { createStore } = require('redux')
+const { 
+  createStore,
+  applyMiddleware
+} = require('redux')
 
-const defaultState = {
-  counter: 0
-}
-// 纯函数
-const reducers = (state=defaultState, action) => {
-  switch (action.type) {
-    case 'increment':
-      return {
-        counter: state.counter + 1
-      }
-    default:
-      return state
-  }
-}
+// const thunk = require('redux-thunk').default
 
-const store = createStore(reducers)
+// const middleware = require('./middleware')
+// const myMiddleware = require('./myMiddleware')
+
+const createSagaMiddleware =  require('redux-saga')
+const sagaMiddleware = createSagaMiddleware()
+
+const reducers = require('./reducer')
+
+const store = createStore(reducers, applyMiddleware(sagaMiddleware))
+
+sagaMiddleware.run(mySaga)
 
 store.subscribe(() => {
   console.log(store.getState())
 })
 
-store.dispatch({
-  type: 'increment'
-})
+// store.dispatch(dispatch => {
+//   setTimeout(() => {
+//     dispatch({
+//       type: 'loadData',
+//       data: 100
+//     })
+//   }, 5000)
+// })
 
 store.dispatch({
-  type: 'increment'
+  type: 'loadData'
 })
