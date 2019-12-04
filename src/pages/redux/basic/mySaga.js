@@ -1,13 +1,13 @@
-import { takeEvery, put } from 'redux-saga/effects'
+const { takeEvery, put } = require('redux-saga/effects')
 
 module.exports = function * () {
-  yield takeEvery('loadData', function * () {
+  yield takeEvery('willLoadData', function * () {
     let result = yield new Promise((resolve) => {
       setTimeout(() => {
         resolve(1000000)
       }, 5000)
     })
 
-    put('loadData', { data: result })
+    yield put({type: 'loadData', data: result })
   })
 }

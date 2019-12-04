@@ -14,7 +14,7 @@ import ReactDOM from 'react-dom'
 // import RenderProps from './pages/enhancer/RenderProps'
 
 import Counter from './pages/counter/Counter'
-import Counter1 from './pages/counter/Counter1'
+// import Counter1 from './pages/counter/Counter1'
 
 // import {
 //   MyProvider
@@ -23,14 +23,11 @@ import Counter1 from './pages/counter/Counter1'
 
 // import Hoc from './pages/hoc/Hoc'
 
-import storeContext from './pages/context/store_context'
-import store from './pages/redux/counter/store'
+// import storeContext from './pages/context/store_context'
+// import store from './pages/redux/counter/store'
 
 ReactDOM.render(
-  <storeContext.Provider value={store}>
-    <Counter></Counter>
-    <Counter1></Counter1>
-  </storeContext.Provider>,
+  <Counter></Counter>,
   document.getElementById('root')
 )
 
