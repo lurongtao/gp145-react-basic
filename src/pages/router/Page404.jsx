@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
 
-export default class Tv extends Component {
+export default class Page404 extends Component {
   render() {
-    console.log(this.props.match)
     return (
       <div>
-        tv
+        免战牌：page404
       </div>
     )
   }

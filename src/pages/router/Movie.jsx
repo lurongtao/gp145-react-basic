@@ -1,15 +1,20 @@
 import React, { Component } from 'react'
 
-import { Route } from 'react-router-dom'
+import { Route, NavLink } from 'react-router-dom'
 
 import MovieList from './List'
 export default class Movie extends Component {
   render() {
+    let { match } = this.props
     return (
       <div>
         movie
+        <NavLink to={{
+          pathname:match.url + '/list', 
+          state: { id: 2 }
+        }}>list</NavLink>
         <Route
-          path="/movie/list"
+          path={match.url + '/list'}
           component={MovieList}
         />
       </div>

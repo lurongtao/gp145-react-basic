@@ -10,6 +10,7 @@ import './router.css'
 
 import Movie from './Movie'
 import Tv from './Tv'
+import Page404 from './Page404'
 
 export default class Index extends Component {
   render() {
@@ -21,18 +22,28 @@ export default class Index extends Component {
         </ul>
         <Switch>
           <Route
-            path="/tv"
-            component={Tv}
-          />
-          <Route
             path="/movie"
             component={Movie}
           />
           <Redirect
+            exact
             from="/"
             to="/movie"
           />
+          <Route
+            path="*"
+            component={Page404}
+          />
         </Switch>
+
+        <Route
+          path="/tv"
+          children={(props) => {
+            return (
+              <Tv {...props}></Tv>
+            )
+          }}
+        />
       </div>
     )
   }
