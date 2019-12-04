@@ -1,7 +1,7 @@
 const { takeEvery, put } = require('redux-saga/effects')
 
 module.exports = function * () {
-  yield takeEvery('willLoadData', function * () {
+  yield takeEvery('willLoadData', function * (action) {
     let result = yield new Promise((resolve) => {
       setTimeout(() => {
         resolve(1000000)

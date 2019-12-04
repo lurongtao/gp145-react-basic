@@ -13,7 +13,10 @@ import ReactDOM from 'react-dom'
 
 // import RenderProps from './pages/enhancer/RenderProps'
 
-import Counter from './pages/counter/Counter'
+// import Counter from './pages/counter/Counter'
+
+// import { Provider } from 'react-redux'
+
 // import Counter1 from './pages/counter/Counter1'
 
 // import {
@@ -24,10 +27,17 @@ import Counter from './pages/counter/Counter'
 // import Hoc from './pages/hoc/Hoc'
 
 // import storeContext from './pages/context/store_context'
+
 // import store from './pages/redux/counter/store'
 
+import { BrowserRouter as Router } from 'react-router-dom'
+
+import Index from './pages/router/Index'
+
 ReactDOM.render(
-  <Counter></Counter>,
+  <Router>
+    <Index></Index>
+  </Router>,
   document.getElementById('root')
 )
 

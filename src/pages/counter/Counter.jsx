@@ -1,34 +1,31 @@
 import React, { Component } from 'react'
-import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
 
-import store from '../redux/counter/store'
-import counterActionCreatores from '../redux/counter/action_creators/counter'
+const mapStateToProps = state => ({
+  count: state.counter.count
+})
 
-import Counter1 from './Counter1'
-
-export default class Counter extends Component {
-  state = {
-    counter: store.getState().counter.count
+const mapDispatchToProps = dispatch => ({
+  increment() {
+    dispatch({
+      type: 'increment'
+    })
   }
+})
 
-  constructor() {
-    super()
-    this.bac = bindActionCreators(counterActionCreatores, store.dispatch)
-  }
-
-  componentDidMount() {
-    // console.log(this.bac)
+class Counter extends Component {
+  increment = () => {
+    this.props.increment()
   }
 
   render() {
-    console.log(this.bac)
     return (
       <div>
-        {this.state.counter}
+        {this.props.count}
         <button onClick={this.increment}>+</button>
-
-        <Counter1 {...this.bac}></Counter1>
       </div>
     )
   }
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(Counter)
