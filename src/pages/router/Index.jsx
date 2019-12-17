@@ -3,6 +3,7 @@ import {
   Route,
   Switch,
   Redirect,
+  withRouter,
   NavLink
 } from 'react-router-dom'
 
@@ -11,14 +12,31 @@ import './router.css'
 import Movie from './Movie'
 import Tv from './Tv'
 import Page404 from './Page404'
+import Nav from './Nav'
+import Memo from './Memo'
 
 export default class Index extends Component {
+  state = {
+    title: 'hello'
+  }
+
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({
+        title: 'hello'
+      })
+    }, 5000)
+  }
+
   render() {
     return (
       <div>
+        <Tv>
+          <Tv.Show></Tv.Show>
+        </Tv>
+        <Memo title={this.state.title}></Memo>
         <ul>
-          <li><NavLink activeClassName='active' to='/movie'>电影</NavLink></li>
-          <li><NavLink activeClassName='active' to='/tv'>电视</NavLink></li>
+          <Nav></Nav>
         </ul>
         <Switch>
           <Route
@@ -35,15 +53,6 @@ export default class Index extends Component {
             component={Page404}
           />
         </Switch>
-
-        <Route
-          path="/tv"
-          children={(props) => {
-            return (
-              <Tv {...props}></Tv>
-            )
-          }}
-        />
       </div>
     )
   }

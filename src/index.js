@@ -32,14 +32,17 @@ import ReactDOM from 'react-dom'
 
 import { BrowserRouter as Router } from 'react-router-dom'
 
-import Index from './pages/router/Index'
+// import Index from './pages/router/Index'
+// import Animate from './pages/router/Animate'
+import Counter from './pages/hooks/Counter'
 
 ReactDOM.render(
   <Router>
-    <Index></Index>
+    <Counter></Counter>
   </Router>,
   document.getElementById('root')
 )
+
 
 // setTimeout(() => {
 //   ReactDOM.unmountComponentAtNode(document.getElementById('root'))
