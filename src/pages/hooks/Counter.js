@@ -1,106 +1,48 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useCallback, useMemo } from 'react'
+import Test from './Test'
 
-// export default class Counter extends Component {
-//   state = {
-//     count: 0
-//   }
-
-//   handleClick = () => {
-//     this.setState(state => {
-//       return {
-//         count: state.count + 1
-//       }
-//     })
-//   }
-
-//   render() {
-//     return (
-//       <>
-//         <div>{this.state.count} <button onClick={this.handleClick}>+</button></div>
-//       </>
-//     )
-//   }
-// }
-
-// export default props => {
-//   let [count2, setCount2] = useState({num: 0})
-
-//   let handleClick = () => {
-//     setCount2({
-//       num: count2.num + 1
-//     })
-//   }
-
-//   return (
-//     <>
-//       <div>{ count2.num } <button onClick={handleClick}>+</button></div>
-//     </>
-//   )
-// }
-
-// export default class Counter extends Component {
-//   state = {
-//     count: 0
-//   }
-
-//   componentDidMount() {
-//     document.title = this.state.count
-//     this.timer = setInterval(() => {
-//       this.setState((state) => {
-//         return {
-//           count: state.count + 1
-//         }
-//       })
-//     }, 1000)
-//   }
-
-//   componentDidUpdate() {
-//     document.title = this.state.count
-//   }
-
-//   componentWillUnmount() {
-//     clearInterval(this.timer)
-//   }
-
-//   render() {
-//     return (
-//       <div>
-//         <button onClick={() => clearInterval(this.timer)}>clear</button>
-//       </div>
-//     )
-//   }
-// }
-
-export default (props) => {
+const Counter = props => {
   let [count, setCount] = useState(0)
+  
+  let [list, setList] = useState([{
+    id: '001',
+    text: 'aaa'
+  }, {
+    id: '002',
+    text: 'bbb'
+  }, {
+    id: '003',
+    text: 'ccc'
+  }])
 
-  // handleClick = () => {
-  //   setCount(count+1)
-  // }
+  let [title, setTitle] = useState('hello')
 
-  let x = 6
-
-  useEffect(() => {
-
-    document.title = count
-    let timer = setInterval(() => {
-      setCount(count+1)
-    }, 1000)
-   
+  let handleClick = useMemo(() => {
     return () => {
-      clearInterval(timer)
+      setCount( count => count + 1 )
     }
   }, [])
 
-  useEffect(() => {
-    console.log('a')
-    document.title = count
-  }, [count])
+  // let MyTest = useMemo(() => <Test title={title} onMyClick={handleClick}></Test>, [title, handleClick])
 
   return (
     <div>
-      <button onClick={() => clearInterval(this.timer)}>clear</button>
-      <button onClick={() => setCount(count+1)}>+</button>
+      <Test list={list}></Test>
+      <div>{count}</div>
+      <div><button onClick={() => setList(list => {
+        return [
+          ...list,
+          {
+            id: '004',
+            text: 'ddd'
+          }
+        ]
+      })}>click</button></div>
+      <div>
+        <button onClick={handleClick}>+</button>
+      </div>
     </div>
   )
 }
+
+export default Counter

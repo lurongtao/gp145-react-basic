@@ -34,11 +34,17 @@ import { BrowserRouter as Router } from 'react-router-dom'
 
 // import Index from './pages/router/Index'
 // import Animate from './pages/router/Animate'
+
 import Counter from './pages/hooks/Counter'
+
+import colorContext from './pages/hooks/colorContext'
+const { Provider } = colorContext
 
 ReactDOM.render(
   <Router>
-    <Counter></Counter>
+    <Provider value={{color: 'green'}}>
+      <Counter></Counter>
+    </Provider>
   </Router>,
   document.getElementById('root')
 )
